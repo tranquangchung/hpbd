@@ -3,6 +3,7 @@ $(window).load(function(){
 	$('.container').fadeIn('fast');
 });
 $('document').ready(function(){
+	    var xmlhttp = new XMLHttpRequest();
 		var vw;
 		$(window).resize(function(){
 			 vw = $(window).width()/2;
@@ -18,7 +19,10 @@ $('document').ready(function(){
 		});
 
 	$('#turn_on').click(function(){
-		$('#bulb_yellow').addClass('bulb-glow-yellow');
+		var str =new Date().toLocaleString() + " : " + "Turn On Lights";
+        xmlhttp.open("GET", "tracking.php?requestText=" + str, true);
+        xmlhttp.send();
+        $('#bulb_yellow').addClass('bulb-glow-yellow');
 		$('#bulb_red').addClass('bulb-glow-red');
 		$('#bulb_blue').addClass('bulb-glow-blue');
 		$('#bulb_green').addClass('bulb-glow-green');
@@ -30,8 +34,13 @@ $('document').ready(function(){
 		});
 	});
 	$('#play').click(function(){
-		var audio = $('.song')[0];
+        var str = new Date().toLocaleString() + " : " + "Play Music";
+        xmlhttp.open("GET", "tracking.php?requestText=" + str, true);
+        xmlhttp.send();
+        var audio = $('.song')[0];
+        console.log(audio);
         audio.play();
+
         $('#bulb_yellow').addClass('bulb-glow-yellow-after');
 		$('#bulb_red').addClass('bulb-glow-red-after');
 		$('#bulb_blue').addClass('bulb-glow-blue-after');
@@ -46,7 +55,10 @@ $('document').ready(function(){
 	});
 
 	$('#bannar_coming').click(function(){
-		$('.bannar').addClass('bannar-come');
+        var str =new Date().toLocaleString() + " : " + "Let's Decorate";
+        xmlhttp.open("GET", "tracking.php?requestText=" + str, true);
+        xmlhttp.send();
+        $('.bannar').addClass('bannar-come');
 		$(this).fadeOut('slow').delay(6000).promise().done(function(){
 			$('#balloons_flying').fadeIn('slow');
 		});
@@ -111,7 +123,10 @@ $('document').ready(function(){
     }
 
 	$('#balloons_flying').click(function(){
-		$('.balloon-border').animate({top:-500},8000);
+        var str =new Date().toLocaleString() + " : " + "Fly With Balloons";
+        xmlhttp.open("GET", "tracking.php?requestText=" + str, true);
+        xmlhttp.send();
+        $('.balloon-border').animate({top:-500},8000);
 		$('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
 		$('#b2,#b3,#b6,#b8').addClass('balloons-rotate-behaviour-two');
 		// $('#b3').addClass('balloons-rotate-behaviour-two');
@@ -134,14 +149,20 @@ $('document').ready(function(){
 	});	
 
 	$('#cake_fadein').click(function(){
-		$('.cake').fadeIn('slow');
+        var str =new Date().toLocaleString() + " : " + "Most Delicious Cake Ever";
+        xmlhttp.open("GET", "tracking.php?requestText=" + str, true);
+        xmlhttp.send();
+        $('.cake').fadeIn('slow');
 		$(this).fadeOut('slow').delay(3000).promise().done(function(){
 			$('#light_candle').fadeIn('slow');
 		});
 	});
 
 	$('#light_candle').click(function(){
-		$('.fuego').fadeIn('slow');
+        var str =new Date().toLocaleString() + " : " + "Light Candle";
+        xmlhttp.open("GET", "tracking.php?requestText=" + str, true);
+        xmlhttp.send();
+        $('.fuego').fadeIn('slow');
 		$(this).fadeOut('slow').promise().done(function(){
 			$('#wish_message').fadeIn('slow');
 		});
@@ -149,8 +170,10 @@ $('document').ready(function(){
 
 		
 	$('#wish_message').click(function(){
-		 vw = $(window).width()/2;
-
+        var str =new Date().toLocaleString() + " : " + "Happy Birthday";
+        xmlhttp.open("GET", "tracking.php?requestText=" + str, true);
+        xmlhttp.send();
+        vw = $(window).width()/2;
 		$('#b1,#b2,#b3,#b4,#b5,#b6,#b7,#b8').stop();
 		$('#b1').attr('id','b11');
 		$('#b2').attr('id','b22');
@@ -160,13 +183,14 @@ $('document').ready(function(){
 		$('#b6').attr('id','b66');
 		$('#b7').attr('id','b77');
 		$('#b8').attr('id','b88');
-		$('#b11').animate({top:240, left: vw-350},500);
-		$('#b22').animate({top:240, left: vw-250},500);
-		$('#b33').animate({top:240, left: vw-150},500);
-		$('#b44').animate({top:240, left: vw-50},500);
-		$('#b55').animate({top:240, left: vw+50},500);
-		$('#b66').animate({top:240, left: vw+150},500);
-		$('#b77').animate({top:240, left: vw+250},500);
+		var leftX = 50;
+		$('#b11').animate({top:240, left: vw-350-leftX},500);
+		$('#b22').animate({top:240, left: vw-250-leftX},500);
+		$('#b33').animate({top:240, left: vw-150-leftX},500);
+		$('#b44').animate({top:240, left: vw-50-leftX},500);
+		$('#b55').animate({top:240, left: vw+50-leftX},500);
+		$('#b66').animate({top:240, left: vw+150-leftX},500);
+		$('#b77').animate({top:240, left: vw+250-leftX},500);
 		$('#b88').animate({top:240, left: vw+300},500);
 		$('.balloons').css('opacity','0.9');
 		$('.balloons h2').fadeIn(3000);
@@ -176,7 +200,10 @@ $('document').ready(function(){
 	});
 	
 	$('#story').click(function(){
-		$(this).fadeOut('slow');
+        var str =new Date().toLocaleString() + " : " + "A message for you";
+        xmlhttp.open("GET", "tracking.php?requestText=" + str, true);
+        xmlhttp.send();
+        $(this).fadeOut('slow');
 		$('.cake').fadeOut('fast').promise().done(function(){
 			$('.message').fadeIn('slow');
 		});
